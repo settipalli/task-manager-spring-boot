@@ -49,7 +49,7 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/todo", method = RequestMethod.POST)
-    public ResponseEntity<Todo> saveTodo(Todo payload) throws TodoException {
+    public ResponseEntity<Todo> saveTodo(@RequestBody Todo payload) throws TodoException {
         logger.info("Payload to save " + payload);
         if (!PayloadValidator.validateCreatePaylod(payload)) {
             throw new TodoException("Malformed payload - id not defined.");
